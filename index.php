@@ -11,7 +11,7 @@ function insertdata($data){
 	$table ="marketdata";
 
 	$sql = "INSERT INTO marketdata (isin, name, `date`, price, volume, status)
-	VALUES ($data[0], '$data[1]', $data[2], $data[3], $data[4], $data[5])";
+	VALUES ('$data[0]', '$data[1]', $data[2], $data[3], $data[4], $data[5])";
 
 	$conn = new mysqli($host, $username, $password, $database);
 	// Check connection
@@ -29,21 +29,21 @@ function insertdata($data){
 
 }
 
-// insertdata( array(1232, "lego", "2017-06-11", 65, 1, 0) )
+// insertdata( array(1232, "lego", "2017-06-11", 65, 1, 0) );
 
 
 function readcsv($filename){
 	$file = fopen($filename, 'r');
 	while (($line = fgetcsv($file)) !== FALSE) {
 	  //$line is an array of the csv elements
-		print_r($line);
-		insertdata($sline)
+		// print_r($line);
+		insertdata($line);
 		// break;
 	}
 	fclose($file);
 }
 
-readcsv('file.csv')
+readcsv('file.csv');
 
 
 ?>
