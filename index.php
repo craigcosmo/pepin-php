@@ -20,9 +20,9 @@ function insertdata($data){
 	$table ="marketdata";
 
 	$sql = "INSERT INTO marketdata (isin, name, `date`, price, volume, status)
-	VALUES ($data[0], $data[1], $data[2], $data[3], $data[4], $data[5])";
+	VALUES ($data[0], '$data[1]', $data[2], $data[3], $data[4], $data[5])";
 
-	$conn = new mysqli($host, $username, $password, $dbname, $database);
+	$conn = new mysqli($host, $username, $password, $database);
 	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
