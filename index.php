@@ -1,13 +1,4 @@
 <?php 
-function readcsv($filename){
-	$file = fopen($filename, 'r');
-	while (($line = fgetcsv($file)) !== FALSE) {
-	  //$line is an array of the csv elements
-		print_r($line);
-		// insertdata($sline)
-	}
-	fclose($file);
-}
 
 
 
@@ -38,8 +29,21 @@ function insertdata($data){
 
 }
 
-insertdata( array(1232, "lego", "2017-06-11", 65, 1, 0) )
+// insertdata( array(1232, "lego", "2017-06-11", 65, 1, 0) )
 
-// readcsv('file.csv')
+
+function readcsv($filename){
+	$file = fopen($filename, 'r');
+	while (($line = fgetcsv($file)) !== FALSE) {
+	  //$line is an array of the csv elements
+		print_r($line);
+		insertdata($sline)
+		// break;
+	}
+	fclose($file);
+}
+
+readcsv('file.csv')
+
 
 ?>
