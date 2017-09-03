@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.5.38)
 # Database: kingsmen
-# Generation Time: 2017-09-02 05:20:38 +0000
+# Generation Time: 2017-09-03 03:52:16 +0000
 # ************************************************************
 
 
@@ -18,6 +18,24 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table depth
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `depth`;
+
+CREATE TABLE `depth` (
+  `date` date DEFAULT NULL,
+  `isin` varchar(12) DEFAULT NULL,
+  `name` varchar(128) DEFAULT NULL,
+  `side` int(11) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `volume` int(11) DEFAULT NULL,
+  `all_or_nothing` int(11) DEFAULT NULL,
+  `flags` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
 # Dump of table marketdata
