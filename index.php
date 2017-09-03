@@ -78,7 +78,38 @@ function readDepth($filename){
 
 
 // readMarketData('file.csv');
-readDepth('millistream.csv');
+// readDepth('millistream.csv');
 
+
+function _get_all_file($dir){
+	$di = new RecursiveDirectoryIterator($dir);
+	$paths = array();
+	foreach (new RecursiveIteratorIterator($di) as $filename => $file) {
+		if(is_file($filename) && preg_match('/^\./',basename($filename)) == 0){
+			$paths[] = $filename;
+		}
+	}
+	return $paths;
+}
+
+
+function _get_all_path($dir)
+{
+	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::CHILD_FIRST);
+	$paths = array();
+	foreach ( $iterator as $path )
+	{
+		if($path->isDir())
+		{
+			$paths[] = $path->getPathname().'/';
+		}
+	}
+	
+	array_push($paths, $dir);
+	return $paths;
+}
+
+$path = _get_all_file('done');
+print_r( $path);
 
 ?>
