@@ -6,9 +6,13 @@ function insertMarketData($data){
 
 	$host ="localhost";
 	$username = "root";
-	$password = "root";
-	$database = "kingsmen";
+	$password = "gf12umbgh";
+	$database = "pep2";
 	$table ="marketdata";
+
+	if ($data[4] == '') {
+		$data[4] = 0;
+	}
 
 	$sql = "INSERT INTO marketdata (isin, name, `date`, price, volume, status)
 	VALUES ('$data[0]', '$data[1]', '$data[2]', $data[3], $data[4], $data[5])";
@@ -18,11 +22,11 @@ function insertMarketData($data){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}else{
-		echo "sql connected";
+		//echo "sql connected";
 	}
 
 	if ($conn->multi_query($sql) === TRUE) {
-	    echo "New record created successfully";
+	    //echo "New record created successfully";
 	} else {
 	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
@@ -33,10 +37,22 @@ function insertDepthData($data){
 
 	$host ="localhost";
 	$username = "root";
-	$password = "root";
-	$database = "kingsmen";
-	$table ="marketdata";
+	$password = "gf12umbgh";
+	$database = "pep2";
+	$table ="depth";
 
+	if ($data[3] == 'Köp') {
+		$data[3] = 1;
+	} elseif ($data[3] == 'Sälj'){
+		$data[3] = 2;
+	} else {
+		echo "Unknown side! side " . $data[3];
+	}
+
+	if ($data[5] == '') {
+		$data[5] = 0;
+	}
+	
 	$sql = "INSERT INTO depth (`date`, isin, name, side, price, volume, all_or_nothing, flags)
 	VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', $data[5], '$data[6]', $data[7])";
 
@@ -45,11 +61,11 @@ function insertDepthData($data){
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}else{
-		echo "sql connected";
+		//echo "sql connected";
 	}
 
 	if ($conn->multi_query($sql) === TRUE) {
-	    echo "New record created successfully";
+	    //echo "New record created successfully";
 	} else {
 	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 	}
@@ -76,7 +92,7 @@ function readData($filename){
 
 
 
-readData('millistream-c.csv');
+//readData('millistream-c.csv');
 
 function _get_all_file($dir){
 	$di = new RecursiveDirectoryIterator($dir);
@@ -91,7 +107,8 @@ function _get_all_file($dir){
 
 
 
-// $path = _get_all_file('done');
-// print_r( $path);
-
+$path = _get_all_file('done');
+foreach ($path as $key => $value) {
+	readData($value);
+}
 ?>
