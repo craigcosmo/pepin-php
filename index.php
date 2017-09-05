@@ -20,8 +20,8 @@ function insertMarketData($data){
 		$data[4] = 0;
 	}
 
-	$sql = "INSERT INTO marketdata (isin, name, `date`, price, volume, status)
-	VALUES ('$data[0]', '$data[1]', '$data[2]', $data[3], $data[4], $data[5])";
+	$sql = "INSERT INTO marketdata (isin, name, `date`, price, volume, status, `created_at`, `updated_at`)
+	VALUES ('$data[0]', '$data[1]', '$data[2]', $data[3], $data[4], $data[5], '$data[2]', '$data[2]')";
 
 	$conn = new mysqli($host, $username, $password, $database);
 	// Check connection
@@ -66,8 +66,8 @@ function insertDepthData($data){
 		$data[5] = 0;
 	}
 	
-	$sql = "INSERT INTO depth (`date`, isin, name, side, price, volume, all_or_nothing, flags)
-	VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', $data[5], '$data[6]', $data[7])";
+	$sql = "INSERT INTO depth (`date`, isin, name, side, price, volume, all_or_nothing, flags, `created_at`, `updated_at`)
+	VALUES ('$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]', $data[5], '$data[6]', $data[7], '$data[0]', '$data[0]')";
 
 	$conn = new mysqli($host, $username, $password, $database);
 	// Check connection
