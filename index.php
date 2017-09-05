@@ -37,9 +37,9 @@ function insertDepthData($data){
 
 	$host ="localhost";
 	$username = "root";
-	$password = "gf12umbgh";
-	$database = "pep2";
-	$table ="depth";
+	$password = "root";
+	$database = "kingsmen";
+	$table ="marketdata";
 
 	if ($data[3] == 'Köp') {
 		$data[3] = 1;
