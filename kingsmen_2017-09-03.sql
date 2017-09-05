@@ -35,7 +35,9 @@ CREATE TABLE `depth` (
   `price` float DEFAULT NULL,
   `volume` int(11) DEFAULT NULL,
   `all_or_nothing` int(11) DEFAULT NULL,
-  `flags` int(11) DEFAULT NULL
+  `flags` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -53,7 +55,9 @@ CREATE TABLE `marketdata` (
   `date` date NOT NULL,
   `price` float NOT NULL,
   `volume` int(11) NOT NULL,
-  `status` int(11) NOT NULL
+  `status` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
