@@ -4,10 +4,15 @@
 
 function insertMarketData($data){
 
+	// $host ="localhost";
+	// $username = "root";
+	// $password = "gf12umbgh";
+	// $database = "pep2";
+	// $table ="marketdata";
 	$host ="localhost";
 	$username = "root";
-	$password = "gf12umbgh";
-	$database = "pep2";
+	$password = "root";
+	$database = "kingsmen";
 	$table ="marketdata";
 
 	if ($data[4] == '') {
@@ -39,7 +44,7 @@ function insertDepthData($data){
 	$username = "root";
 	$password = "root";
 	$database = "kingsmen";
-	$table ="marketdata";
+	$table ="depth";
 
 	if ($data[3] == 'Köp') {
 		$data[3] = 1;
