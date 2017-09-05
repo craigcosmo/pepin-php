@@ -4,16 +4,17 @@
 
 function insertMarketData($data){
 
-	// $host ="localhost";
-	// $username = "root";
-	// $password = "gf12umbgh";
-	// $database = "pep2";
-	// $table ="marketdata";
 	$host ="localhost";
 	$username = "root";
-	$password = "root";
-	$database = "kingsmen";
+	$password = "gf12umbgh";
+	$database = "pep2";
 	$table ="marketdata";
+	
+	// $host ="localhost";
+	// $username = "root";
+	// $password = "root";
+	// $database = "kingsmen";
+	// $table ="marketdata";
 
 	if ($data[4] == '') {
 		$data[4] = 0;
@@ -40,11 +41,18 @@ function insertMarketData($data){
 
 function insertDepthData($data){
 
+
 	$host ="localhost";
 	$username = "root";
-	$password = "root";
-	$database = "kingsmen";
+	$password = "gf12umbgh";
+	$database = "pep2";
 	$table ="depth";
+
+	// $host ="localhost";
+	// $username = "root";
+	// $password = "root";
+	// $database = "kingsmen";
+	// $table ="depth";
 
 	if ($data[3] == 'Köp') {
 		$data[3] = 1;
