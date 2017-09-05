@@ -26,6 +26,8 @@
 DROP TABLE IF EXISTS `depth`;
 
 CREATE TABLE `depth` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (`id`),
   `date` date DEFAULT NULL,
   `isin` varchar(12) DEFAULT NULL,
   `name` varchar(128) DEFAULT NULL,
@@ -44,6 +46,8 @@ CREATE TABLE `depth` (
 DROP TABLE IF EXISTS `marketdata`;
 
 CREATE TABLE `marketdata` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (`id`),
   `isin` varchar(12) NOT NULL,
   `name` varchar(128) NOT NULL DEFAULT '',
   `date` date NOT NULL,
