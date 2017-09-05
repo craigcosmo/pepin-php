@@ -56,30 +56,27 @@ function insertDepthData($data){
 
 }
 
-// insertdata( array(1232, "lego", "2017-06-11", 65, 1, 0) );
 
-
-function readMarketData($filename){
+function readData($filename){
 	$file = fopen($filename, 'r');
-	while (($line = fgetcsv($file)) !== FALSE) {
-		// print_r($line);
-		insertMarketData($line);
+	if ($file) {
+		while (($line = fgetcsv($file)) !== FALSE) {
+			if (strrpos($filename, "millistream-c")!==false) {
+				insertDepthData($line);
+			}
+			if (strrpos($filename, "millistream-h")!==false) {
+				insertMarketData($line);
+			}
+		}
+	}else{
+		echo "no such file ".$filename;
 	}
 	fclose($file);
 }
 
-function readDepth($filename){
-	$file = fopen($filename, 'r');
-	while (($line = fgetcsv($file)) !== FALSE) {
-		insertDepthData($line);
-	}
-	fclose($file);
-}
 
 
-// readMarketData('file.csv');
-// readDepth('millistream.csv');
-
+readData('millistream-c.csv');
 
 function _get_all_file($dir){
 	$di = new RecursiveDirectoryIterator($dir);
@@ -93,23 +90,8 @@ function _get_all_file($dir){
 }
 
 
-function _get_all_path($dir)
-{
-	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir), RecursiveIteratorIterator::CHILD_FIRST);
-	$paths = array();
-	foreach ( $iterator as $path )
-	{
-		if($path->isDir())
-		{
-			$paths[] = $path->getPathname().'/';
-		}
-	}
-	
-	array_push($paths, $dir);
-	return $paths;
-}
 
-$path = _get_all_file('done');
-print_r( $path);
+// $path = _get_all_file('done');
+// print_r( $path);
 
 ?>
